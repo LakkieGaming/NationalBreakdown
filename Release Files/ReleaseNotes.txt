@@ -1,0 +1,4 @@
+v1.00:
+	- Created National Breakdown
+	- Added 4 historical presets.
+	- Added logging system.
