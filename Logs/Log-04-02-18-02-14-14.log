@@ -1,7 +1,0 @@
-[02:14:04 LOG]: Starting app...
-[02:14:04 LOG]: Loading abstract menus
-[02:14:06 LOG]: Loading national profiles
-[02:14:06 LOG]: Finished loading profiles in 43ms
-[02:14:10 LOG]: Searching for local nation breakdowns
-[02:14:12 LOG]: Loaded national breakdown: NewGermany.nationdb
-[02:14:13 LOG]: Saved new values for Germany
