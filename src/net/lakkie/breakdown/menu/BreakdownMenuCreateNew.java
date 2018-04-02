@@ -75,6 +75,7 @@ public class BreakdownMenuCreateNew extends JFrame implements KeyListener
 				try
 				{
 					NationBreakdown.active.serialize(new FileOutputStream(nationFile));
+					NationBreakdown.active = null;
 				} catch (Exception e)
 				{
 					JOptionPane.showMessageDialog(null, "Error creating nation, see console for more details", "Error Creating", JOptionPane.ERROR_MESSAGE);

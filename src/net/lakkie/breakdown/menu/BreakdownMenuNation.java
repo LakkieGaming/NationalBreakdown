@@ -722,7 +722,7 @@ public class BreakdownMenuNation extends JFrame implements WindowListener
 				NationalIdeologyType gov = null;
 				for (NationalIdeologyType type : NationalIdeologyType.getGovernment())
 				{
-					if (type.getAdjective().equals(listGovernment.getSelectedValue()))
+					if (type.toString().equals(listGovernment.getSelectedValue()))
 					{
 						gov = type;
 					}
@@ -730,6 +730,7 @@ public class BreakdownMenuNation extends JFrame implements WindowListener
 				if (eco == null || gov == null)
 				{
 					JOptionPane.showMessageDialog(null, "No selected government type", "No Selection", JOptionPane.ERROR_MESSAGE);
+					return;
 				}
 				ideology.setEconomicType(eco);
 				ideology.setGovernmentType(gov);

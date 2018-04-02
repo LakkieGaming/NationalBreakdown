@@ -7,8 +7,8 @@ public enum NationalIdeologyType
 {
 
 	ANARCHISM("Anarchist", false), CENTRISM("Centrist", true), CONSERVATISM("Conservative", true), LIBERALISM("Liberal", true), SOCIALISM("Socialist",
-			true), CAPITALISM("Capitalist", true), AUTHORITARIAN("Authoritarian",
-					false), MIXED_ECONOMY("Mixed", true), FASCIST("Fascist", false), COMMUNIST("Communist", false), NON_ALIGNED("Non Aligned", false);
+			true), CAPITALISM("Capitalist", true), AUTHORITARIAN("Authoritarian", false), MIXED_ECONOMY("Mixed",
+					true), FASCIST("Fascist", false), COMMUNIST("Communist", false), NON_ALIGNED("Non Aligned", false), DEMOCRACY("Democratic", false);
 
 	private static final List<NationalIdeologyType> economicList, governmentList;
 

@@ -1,0 +1,15 @@
+Ideas for Expansion:
+  - Pull updates from web
+  - Add configuratable splash screen
+  - Add language support
+  - Add air force
+  - Add more scenarios
+  - Add scenario groups
+  - Add nation description
+  - Add division template
+  - Add territory manager
+  - Add style picker
+  - Make tabs configurable
+  - Add loading menu
+  - Add loading progress
+  - Add export stylesheet

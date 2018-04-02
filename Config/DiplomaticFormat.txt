@@ -1,1 +1,1 @@
-%s has a %s diplomatic presence, with %s allies, %s rivals, and in %s alliance.
+%s has a %s diplomatic presence, with %s allie(s), %s rival(s), and in %s alliance.

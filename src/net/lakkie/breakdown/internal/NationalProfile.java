@@ -6,13 +6,14 @@ import java.util.List;
 
 import net.lakkie.breakdown.internal.rep.NationBreakdown;
 import net.lakkie.breakdown.internal.rep.NationalIdeologyType;
+import net.lakkie.breakdown.menu.pods.BreakdownMenuInterpreter;
 import net.lakkie.complexini.rep.CINIConfiguration;
 
 public class NationalProfile
 {
 
 	private static final List<NationalProfile> profiles = new ArrayList<NationalProfile>();
-	
+
 	private File file;
 	private CINIConfiguration conf;
 	private String name, filename;
@@ -34,6 +35,12 @@ public class NationalProfile
 		this.file = new File(BasicUtility.getRoot(), path);
 		this.conf = CINIConfiguration.load(this.file);
 		this.readPresetFile();
+		BreakdownMenuInterpreter.waitForEvent("scenario:load", (args) -> {
+			if (args[0].equals(this.file.getName()))
+			{
+				this.loadPreset();
+			}
+		});
 		profiles.add(this);
 	}
 
@@ -67,7 +74,7 @@ public class NationalProfile
 		this.shipRegular = (int) this.conf.getDouble("/nation/navy/battleships#regular");
 		this.shipCapital = (int) this.conf.getDouble("/nation/navy/battleships#capital");
 	}
-	
+
 	public void loadPreset()
 	{
 		NationBreakdown nation = new NationBreakdown(this.name);
