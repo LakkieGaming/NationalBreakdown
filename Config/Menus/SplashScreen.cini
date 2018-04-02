@@ -36,8 +36,8 @@
 			type = "button"
 			value = "Okay"
 			[args] {
-				on_click = "nation:delete"
-				args = "NationDatabase/Germany1938.nationdb"
+				on_click = "window:close"
+				args = ""
 				font_size = 14
 			}
 			x = 150

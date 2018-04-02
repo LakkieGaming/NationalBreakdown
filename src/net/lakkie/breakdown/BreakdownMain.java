@@ -16,9 +16,12 @@ import net.lakkie.breakdown.menu.BreakdownMenuMain;
 import net.lakkie.breakdown.menu.BreakdownMenuNation;
 import net.lakkie.breakdown.menu.pods.BreakdownAbstractTrigger;
 import net.lakkie.breakdown.menu.pods.BreakdownMenuInterpreter;
+import net.lakkie.complexini.rep.CINIConfiguration;
 
 public class BreakdownMain
 {
+
+	public static final CINIConfiguration versionInfo = CINIConfiguration.load(new File(BasicUtility.getRoot(), "Config/Version.cini"));
 
 	public static void main(String[] args)
 	{

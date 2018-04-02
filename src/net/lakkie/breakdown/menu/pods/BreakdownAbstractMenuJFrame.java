@@ -33,6 +33,7 @@ public class BreakdownAbstractMenuJFrame extends JFrame implements WindowListene
 		if (this.menu.getFileNode().queryNodeExists("/auto_close#time"))
 		{
 			new ScheduledThreadPoolExecutor(1).schedule(() -> {
+				if (!this.isVisible()) { return; }
 				BreakdownMenuInterpreter.callEvent("window:close");
 			}, (long) (this.menu.getFileNode().queryDouble("/auto_close#time")), TimeUnit.valueOf(this.menu.getFileNode().queryString("/auto_close#units")));
 		}
@@ -40,6 +41,7 @@ public class BreakdownAbstractMenuJFrame extends JFrame implements WindowListene
 		this.setLayout(null);
 		CINIConfigNode content = this.menu.getFileNode().getChildNodesWithName("content", true).get(0);
 		BreakdownMenuInterpreter.waitForEvent("window:close", (args) -> {
+			this.setVisible(false);
 			this.dispose();
 			this.windowClosing(null);
 		});
