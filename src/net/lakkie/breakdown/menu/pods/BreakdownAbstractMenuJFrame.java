@@ -1,5 +1,6 @@
 package net.lakkie.breakdown.menu.pods;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -10,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import net.lakkie.complexini.rep.CINIConfigNode;
 
@@ -19,17 +21,18 @@ public class BreakdownAbstractMenuJFrame extends JFrame implements WindowListene
 	private static final long serialVersionUID = 2707044444084759269L;
 
 	public BreakdownAbstractMenu menu;
+	public JPanel panel;
 
 	public BreakdownAbstractMenuJFrame(BreakdownAbstractMenu menu)
 	{
 		this.menu = menu;
-		this.setSize((int) this.menu.getFileNode().queryDouble("/size#width"), (int) this.menu.getFileNode().queryDouble("/size#height"));
 		this.addWindowListener(this);
 		this.setTitle(this.menu.getTitle());
-		if (this.menu.getFileNode().queryBoolean("/#center"))
-		{
-			this.setLocationRelativeTo(null);
-		}
+		this.panel = new JPanel();
+		this.panel.setSize(new Dimension((int) this.menu.getFileNode().queryDouble("/size#width"), (int) this.menu.getFileNode().queryDouble("/size#height")));
+		this.panel.setMinimumSize(
+				new Dimension((int) this.menu.getFileNode().queryDouble("/size#width"), (int) this.menu.getFileNode().queryDouble("/size#height")));
+		this.setSize(new Dimension(this.panel.getWidth(), this.panel.getHeight()));
 		if (this.menu.getFileNode().queryNodeExists("/auto_close#time"))
 		{
 			new ScheduledThreadPoolExecutor(1).schedule(() -> {
@@ -38,7 +41,7 @@ public class BreakdownAbstractMenuJFrame extends JFrame implements WindowListene
 			}, (long) (this.menu.getFileNode().queryDouble("/auto_close#time")), TimeUnit.valueOf(this.menu.getFileNode().queryString("/auto_close#units")));
 		}
 		this.setResizable(false);
-		this.setLayout(null);
+		this.panel.setLayout(null);
 		CINIConfigNode content = this.menu.getFileNode().getChildNodesWithName("content", true).get(0);
 		BreakdownMenuInterpreter.waitForEvent("window:close", (args) -> {
 			this.setVisible(false);
@@ -79,7 +82,7 @@ public class BreakdownAbstractMenuJFrame extends JFrame implements WindowListene
 				{
 					label.setFont(new Font(component.queryString("/args#font_name"), label.getFont().getStyle(), label.getFont().getSize()));
 				}
-				this.add(label);
+				this.panel.add(label);
 			}
 			if (type.equals("button"))
 			{
@@ -113,13 +116,19 @@ public class BreakdownAbstractMenuJFrame extends JFrame implements WindowListene
 				{
 					button.setFont(new Font(component.queryString("/args#font_name"), button.getFont().getStyle(), button.getFont().getSize()));
 				}
-				this.add(button);
+				this.setBounds(x, y, w, h);
+				this.panel.add(button);
 			}
 		}
 		if (this.menu.getFileNode().getFirstBoolean("close_app"))
 		{
 			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
+		if (this.menu.getFileNode().getFirstBoolean("center"))
+		{
+			this.setLocationRelativeTo(null);
+		}
+		this.add(this.panel);
 		this.setVisible(this.menu.getFileNode().queryBoolean("/#visible"));
 	}
 
