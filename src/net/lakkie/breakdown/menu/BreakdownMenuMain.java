@@ -21,7 +21,6 @@ import javax.swing.JOptionPane;
 
 import org.apache.commons.io.FilenameUtils;
 
-import net.lakkie.breakdown.BreakdownMain;
 import net.lakkie.breakdown.internal.BasicUtility;
 import net.lakkie.breakdown.internal.BreakdownFileOpener;
 import net.lakkie.breakdown.internal.LoggingSystem;
@@ -35,7 +34,7 @@ public class BreakdownMenuMain extends JFrame implements WindowListener
 
 	public BreakdownMenuMain()
 	{
-		this.setTitle("National Breakdown | Main | " + BreakdownMain.versionInfo.getString("/app#version"));
+		this.setTitle("National Breakdown | Main");
 		this.setSize(600, 400);
 		this.setLocationRelativeTo(null);
 		this.setLayout(new GridBagLayout());

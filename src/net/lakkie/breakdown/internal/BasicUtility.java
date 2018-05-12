@@ -93,17 +93,36 @@ public class BasicUtility
 			return null;
 		}
 	}
-	
+
+	public static String capitalize(String wordSequence)
+	{
+		String[] words;
+		if (wordSequence.contains(" "))
+		{
+			words = wordSequence.split("\\s+");
+		} else
+		{
+			words = new String[] { wordSequence };
+		}
+		StringBuilder result = new StringBuilder();
+		for (String word : words) {
+			char[] wordChars = word.toLowerCase().toCharArray();
+			wordChars[0] = Character.toUpperCase(wordChars[0]);
+			result.append(wordChars);
+		}
+		return result.toString();
+	}
+
 	public static File getLogFolder()
 	{
 		return logFolder;
 	}
-	
+
 	public static DateFormat getDateFormatShort()
 	{
 		return dateFormatShort;
 	}
-	
+
 	public static DateFormat getDateFormatLong()
 	{
 		return dateFormatLong;

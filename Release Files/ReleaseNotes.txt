@@ -1,3 +1,5 @@
+v1.02:
+	- Added update checker
 v1.01:
 	- Added soft-codable menus
 	- Fixed some menu-related bugs

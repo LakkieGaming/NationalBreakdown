@@ -65,7 +65,7 @@ public class BreakdownMenuCreateNew extends JFrame implements KeyListener
 					return;
 				}
 				dispose();
-				new NationBreakdown(this.textField.getText());
+				new NationBreakdown(BasicUtility.capitalize(this.textField.getText()));
 				File nationFile = new File(BasicUtility.getDatabaseFolder(), this.textField_1.getText() + ".nationdb");
 				if (nationFile.exists())
 				{

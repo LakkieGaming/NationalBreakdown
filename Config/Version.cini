@@ -1,3 +1,4 @@
 [app] {
-	version = "Release 1.0.1"
+	version = "1.02"
+	version_id = "1-02"
 }
